@@ -1,0 +1,49 @@
+header.class1 {
+  color: blue;
+  text-align: center; 
+  padding: 3px;
+  margin: 0px;
+ 
+}
+
+nav.nav1{
+     background: rgb(81,157,247);
+     background: linear-gradient(90deg, rgba(81,157,247,1) 21%, rgba(255,255,255,1) 100%);
+}
+
+li.list1 {
+  display: inline;
+}
+span.title1 {
+     display: inline;
+     font-size: 40px;
+     font-family: sans-serif;
+     font-weight: bolder;
+     
+     
+   }
+
+span.list1{
+     float: right;
+}
+
+a:link.type1,
+a:visited.type1 {
+  background-color: #2d2fc0;
+  color: white;
+  padding: 14px 25px;
+  margin: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  text-emphasis-color: rgb(149, 135, 233);
+}
+
+a:hover.type1, a:active.type1 {
+     background-color: #00ccffb0;
+   }
+
+
+   body{
+     
+   }
