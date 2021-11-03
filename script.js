@@ -18,16 +18,20 @@ function addUser() {
         localStorage.setItem('arrayUsuarios', JSON.stringify(arrayUsuarios));
     }
     let arrayUsuarios = JSON.parse(localStorage.getItem('arrayUsuarios'));
-    console.log("se entro a addUser")
+    let arrayLength = arrayUsuarios.length;
+    console.log("se entro a addUser, el array length es: " + arrayLength);
     let cantidadDeUsuarios = prompt("ingresa el numero de objetos a ingresar");
-    for (i = 0; i < cantidadDeUsuarios; i++) {
+    let nCondicional = arrayLength + parseInt(cantidadDeUsuarios);
+    
+    console.log("el limite de for es " + nCondicional);
+    for (i = arrayLength; i < nCondicional; i++) {
         let nombre = IngresarDato("nombre");
         let placas = IngresarDato("placas");
         let ethereum = IngresarDato("ethereum");
         let gastoElectrico = IngresarDato("gastoElectrico");
         let id = i + 1;
         arrayUsuarios[i] = new Usuario(id, nombre, placas, ethereum, gastoElectrico);
-        document.getElementById("newUser").innerHTML = ('usuario nuevo añadido: ' + JSON.stringify(arrayUsuarios[i]));
+        document.getElementById("newUser").innerHTML = ('ultimo usuario nuevo añadido: ' + JSON.stringify(arrayUsuarios[i]));
         console.log("objeto añadido: " + JSON.stringify(arrayUsuarios[i]));
         localStorage.setItem('arrayUsuarios', JSON.stringify(arrayUsuarios));
         console.log("setItem: " + JSON.stringify(arrayUsuarios));
