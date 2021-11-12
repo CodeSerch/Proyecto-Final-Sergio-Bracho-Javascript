@@ -6,9 +6,10 @@ header.class1 {
  
 }
 
-nav.nav1{
-     background: rgb(81,157,247);
-     background: linear-gradient(90deg, rgba(81,157,247,1) 21%, rgba(255,255,255,1) 100%);
+
+
+.div1{
+     padding: 20px;
 }
 
 li.list1 {
@@ -44,6 +45,10 @@ a:hover.type1, a:active.type1 {
    }
 
 
-   body{
-     
-   }
+  .bloque1{
+    padding: 50px;
+    width: 250px;
+    text-align: center;
+    text-justify: auto;
+    border-radius: 10px;
+  }

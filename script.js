@@ -11,6 +11,10 @@ function IngresarDato(dato) {
     return prompt("Ingresa tu " + dato);
 }
 
+$(function () {
+    $("#nav-placeholder").load("nav.html");
+  });
+
 function addUser() {
     if (!(localStorage.getItem('arrayUsuarios'))) {
         console.log("no existe el array, creando uno...");
@@ -22,7 +26,7 @@ function addUser() {
     console.log("se entro a addUser, el array length es: " + arrayLength);
     let cantidadDeUsuarios = prompt("ingresa el numero de objetos a ingresar");
     let nCondicional = arrayLength + parseInt(cantidadDeUsuarios);
-    
+
     console.log("el limite de for es " + nCondicional);
     for (i = arrayLength; i < nCondicional; i++) {
         let nombre = IngresarDato("nombre");
@@ -67,3 +71,19 @@ test.addEventListener("mouseover", function (event) {
 document.getElementById("addUser").addEventListener("click", addUser, false);
 document.getElementById("update").addEventListener("click", update, false);
 document.getElementById("clear").addEventListener("click", clear, false);
+
+function f1() {
+    console.log("hola")
+    $(".bloque1").hide(1000)
+}
+
+document.getElementById("buttonM").addEventListener("click", f1, false);
+
+$(document).ready(function () {
+    $(".div1")
+  .delay(1000)
+  .queue(function (next) { 
+    $(this).css("background-color", "#044cb8"); 
+    next(); 
+  });
+});
