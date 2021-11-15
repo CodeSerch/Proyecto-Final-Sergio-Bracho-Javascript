@@ -11,6 +11,10 @@ function IngresarDato(dato) {
     return prompt("Ingresa tu " + dato);
 }
 
+$(function () {
+    $("#nav-placeholder").load("nav.html");
+  });
+
 function addUser() {
     if (!(localStorage.getItem('arrayUsuarios'))) {
         console.log("no existe el array, creando uno...");
@@ -75,3 +79,19 @@ Concatenar.addEventListener("mouseover", function (event) {
 document.getElementById("addUser").addEventListener("click", addUser, false);
 document.getElementById("update").addEventListener("click", update, false);
 document.getElementById("clear").addEventListener("click", clear, false);
+
+function f1() {
+    console.log("hola")
+    $(".bloque1").hide(1000)
+}
+
+document.getElementById("buttonM").addEventListener("click", f1, false);
+
+$(document).ready(function () {
+    $(".div1")
+  .delay(1000)
+  .queue(function (next) { 
+    $(this).css("background-color", "#044cb8"); 
+    next(); 
+  });
+});
