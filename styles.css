@@ -44,6 +44,11 @@ a:hover.type1, a:active.type1 {
    }
 
 
-   body{
-     
+
+   .concatenar{
+     width: 300px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-color: blue;
+    text-align: center;
    }

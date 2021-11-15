@@ -22,7 +22,7 @@ function addUser() {
     console.log("se entro a addUser, el array length es: " + arrayLength);
     let cantidadDeUsuarios = prompt("ingresa el numero de objetos a ingresar");
     let nCondicional = arrayLength + parseInt(cantidadDeUsuarios);
-    
+
     console.log("el limite de for es " + nCondicional);
     for (i = arrayLength; i < nCondicional; i++) {
         let nombre = IngresarDato("nombre");
@@ -50,6 +50,7 @@ function clear() {
 }
 
 let test = document.getElementById("cuadrado");
+let Concatenar = document.getElementById("concatenar");
 test.addEventListener("mouseenter", function (event) {
     // highlight the mouseenter target
     event.target.style.backgroundColor = 'green';
@@ -63,6 +64,13 @@ test.addEventListener("mouseover", function (event) {
         event.target.style.color = "";
     }, 1000);
 }, false);
+Concatenar.addEventListener("mouseover", function (event) {
+    $('.concatenar').hide(1000);
+    setTimeout(function () {
+        $('.concatenar').show(1000);
+    }, 1000);
+}, false);
+
 
 document.getElementById("addUser").addEventListener("click", addUser, false);
 document.getElementById("update").addEventListener("click", update, false);
