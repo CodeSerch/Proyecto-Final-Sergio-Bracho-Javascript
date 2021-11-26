@@ -1,10 +1,9 @@
 class Usuario {
-    constructor(id, nombre, placas, ethereum, gastoElectrico) {
+    constructor(id, nombre, correo, placas) {
         this.id = id;
         this.nombre = nombre;
         this.placas = placas;
-        this.ethereum = ethereum;
-        this.gastoElectrico = gastoElectrico;
+        this.correo = correo;
     }
 }
 function IngresarDato(dato) {
@@ -13,7 +12,7 @@ function IngresarDato(dato) {
 
 $(function () {
     $("#nav-placeholder").load("nav.html");
-  });
+});
 
 function addUser() {
     if (!(localStorage.getItem('arrayUsuarios'))) {
@@ -89,9 +88,41 @@ document.getElementById("buttonM").addEventListener("click", f1, false);
 
 $(document).ready(function () {
     $(".div1")
-  .delay(1000)
-  .queue(function (next) { 
-    $(this).css("background-color", "#044cb8"); 
-    next(); 
-  });
+        .delay(1000)
+        .queue(function (next) {
+            $(this).css("background-color", "#044cb8");
+            next();
+        });
 });
+
+function enviar() {
+    console.log("funcion enviar!")
+    let nombre = document.getElementById('nombre').value;
+    let correo = document.getElementById('correo').value;
+    let placas = document.getElementById('placas').value;
+
+    let data = {
+        "nombre": nombre,
+        "correo": correo,
+        "placas": placas
+    };
+    console.log("data a enviar: " + data)
+    $.ajax({
+        data: data,
+        url: 'send.php',
+        type: 'post',
+        contentType: "application/json",
+        dataType: "json", //Expected data format from server  
+        beforeSend: function () {
+            $("#respa").html("Procesando, espere por favor...");
+        },
+        success: function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+            $("#respa").html(response);
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("some error" + JSON.stringify(XMLHttpRequest));
+        }
+    });
+    return false;
+}
+
