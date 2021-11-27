@@ -15,21 +15,25 @@ $(function () {
 });
 
 function addUser(nombre, correo, placas) {
-    if (!(localStorage.getItem('arrayUsuarios'))) {
-        console.log("no existe el array, creando uno...");
-        let arrayUsuarios = new Array;
+    if (nombre == "" || correo == "" || placas == "") {
+        alert("un campo esta vacio!")
+    } else {
+        if (!(localStorage.getItem('arrayUsuarios'))) {
+            console.log("no existe el array, creando uno...");
+            let arrayUsuarios = new Array;
+            localStorage.setItem('arrayUsuarios', JSON.stringify(arrayUsuarios));
+        }
+        let arrayUsuarios = JSON.parse(localStorage.getItem('arrayUsuarios'));
+        let id = arrayUsuarios.length + 1;
+        console.log("id: " + id);
+        const usuario1 = new Usuario(id, nombre, correo, placas);
+        console.log("usuario1: " + JSON.stringify(usuario1));
+        arrayUsuarios.push(usuario1);
+        document.getElementById("newUser").innerHTML = ('ultimo usuario nuevo añadido: ' + JSON.stringify(arrayUsuarios[id - 1]));
+        console.log("objeto añadido: " + JSON.stringify(arrayUsuarios[id]));
         localStorage.setItem('arrayUsuarios', JSON.stringify(arrayUsuarios));
+        console.log("setItem: " + JSON.stringify(arrayUsuarios));
     }
-    let arrayUsuarios = JSON.parse(localStorage.getItem('arrayUsuarios'));
-    let id = arrayUsuarios.length + 1;
-    console.log("id: " + id);
-    const usuario1 = new Usuario(id, nombre, correo, placas);
-    console.log("usuario1: " + JSON.stringify(usuario1));
-    arrayUsuarios.push(usuario1);
-    document.getElementById("newUser").innerHTML = ('ultimo usuario nuevo añadido: ' + JSON.stringify(arrayUsuarios[id-1]));
-    console.log("objeto añadido: " + JSON.stringify(arrayUsuarios[id]));
-    localStorage.setItem('arrayUsuarios', JSON.stringify(arrayUsuarios));
-    console.log("setItem: " + JSON.stringify(arrayUsuarios));
 }
 function update() {
     let listaOrdenada = JSON.parse(localStorage.getItem('arrayUsuarios')).sort(function (a, b) {
@@ -73,27 +77,31 @@ function f1() {
 
 
 $("#send").click(function () {
-    console.log("funcion enviar!");
     let nombre = document.getElementById('nombre').value;
     let correo = document.getElementById('correo').value;
     let placas = document.getElementById('placas').value;
+    if (nombre == "" || correo == "" || placas == "") {
+        console.log("un campo esta vacio! sendForm")
+    } else {
+        console.log("funcion enviar!");
 
-    addUser(nombre, correo, placas);
+        addUser(nombre, correo, placas);
 
-    let data = "<h1>Nombre: " + nombre + '<br/>' + " Correo: " + correo + '<br/>' + " Placas: " + placas + "<h1/>";
-    console.log("data a enviar: " + data);
-    $.ajax({
-        type: 'get',
-        data: data,
-        url: 'send.php',
-        beforeSend: function () {
-            alert('Processing form...');
-        },
-        success: function () {
-            $("#respa").html(data);
-        }
-    })
-    return false;
+        let data = "<h1>Nombre: " + nombre + '<br/>' + " Correo: " + correo + '<br/>' + " Placas: " + placas + "<h1/>";
+        console.log("data a enviar: " + data);
+        $.ajax({
+            type: 'get',
+            data: data,
+            url: 'send.php',
+            beforeSend: function () {
+                alert('Processing form...');
+            },
+            success: function () {
+                $("#respa").html(data);
+            }
+        })
+        return false;
+    }
 });
 
 
