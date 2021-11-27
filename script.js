@@ -40,7 +40,8 @@ function update() {
 
 function clear() {
     localStorage.removeItem('arrayUsuarios');
-    console.log("variables locales borradas..")
+    console.log("variables locales borradas..");
+    alert("se limpio el almacenamiento local")
 }
 
 let test = document.getElementById("cuadrado");
@@ -60,7 +61,6 @@ test.addEventListener("mouseover", function (event) {
 }, false);
 
 
-document.getElementById("addUser").addEventListener("click", addUser, false);
 document.getElementById("update").addEventListener("click", update, false);
 document.getElementById("clear").addEventListener("click", clear, false);
 
