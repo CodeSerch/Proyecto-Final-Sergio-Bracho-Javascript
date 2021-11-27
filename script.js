@@ -40,6 +40,7 @@ function update() {
         return (b.placas - a.placas)
     })
     document.getElementById("objeto").innerHTML = JSON.stringify(listaOrdenada);
+    $("#objeto").show(1000)
 }
 
 function clear() {
@@ -68,12 +69,15 @@ test.addEventListener("mouseover", function (event) {
 document.getElementById("update").addEventListener("click", update, false);
 document.getElementById("clear").addEventListener("click", clear, false);
 
+
 function f1() {
     console.log("hola")
     $(".bloque1").hide(1000)
 }
 
-
+$("#ocultarU").click(function (){
+    $("#objeto").hide(1000)
+})
 
 
 $("#send").click(function () {

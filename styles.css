@@ -7,7 +7,12 @@ header.class1 {
 }
 
 
-
+div.form1{
+  background-color: rgba(63, 63, 63, 0.753);
+  padding: 20px;
+  border-radius: 10px;
+  word-wrap: break-word;
+}
 .div1{
      padding: 20px;
 }
