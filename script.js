@@ -28,7 +28,7 @@ function addUser(nombre, correo, placas) {
         const usuario1 = new Usuario(id, nombre, correo, placas);
         arrayUsuarios.push(usuario1);
 
-        //document.getElementById("newUser").innerHTML = ('ultimo usuario nuevo añadido: ' + JSON.stringify(usuario1));
+        document.getElementById("newUser").innerHTML = ('Nuevo Usuario: ' + JSON.stringify(usuario1));
         console.log("objeto añadido: " + JSON.stringify(arrayUsuarios[id]));
         localStorage.setItem('arrayUsuarios', JSON.stringify(arrayUsuarios));
         console.log("setItem: " + JSON.stringify(arrayUsuarios));
@@ -123,11 +123,33 @@ $("#send").click(function () {
             success: function () {
                 console.log("sucess, data:" + data);
                 update();
+                alert("envio exitoso")
             }
         })
         return false;
     }
 });
+
+$("#getJson").click(function () {
+    let pokemon = document.getElementById('pokemon').value;
+    let pokemonInfo = document.getElementById('pokemonInfo');
+    pokemonInfo
+        $.ajax({
+            type: 'GET',
+            url: 'https://pokeapi.co/api/v2/pokemon/'+pokemon,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            beforeSend: function () {
+                alert('Processing form...');
+            },
+            success: function (data) {
+                console.log("sucess, data:" + JSON.stringify(data));
+                pokemonInfo.innerHTML = ("Nombre: " + data.name + " Id: " + data.id + " Tipo: " + JSON.stringify(data.types[0].type.name));
+                alert("getJson existoso");
+            }
+        })
+    }
+);
 
 
 
