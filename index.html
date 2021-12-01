@@ -19,6 +19,7 @@
   </header>
   <div class="div1">
     <h1>Añadir Usuario</h1>
+
     <div class="form1  col-md-4">
       <form method="post">
         <div class="form-group">
@@ -33,31 +34,26 @@
           <input type="text" class="form-control" placeholder="Placas de Video" id="placas">
         </div>
         <br />
-        <button type="submit" class="btn btn-primary" id="send">Submit</button>
+        <button type="button" class="btn btn-primary" id="send">Submit</button>
       </form>
     </div>
   </div>
-
-
-  <p id="respa">respuesta</p>
-
-  <br />
   <h2 id="newUser"></h2>
   <h1>Actualizar</h1>
-  <button id="update" type="button"">actualizar y ordenar en forma ascendente por numero de placas</button>
-    <div class=" form1 col-md-4">
-    <h2 id="objeto"></h2>
-    <button id="ocultarU" type="button"">ocultar</button>
-    </div>
-    <h1>ClearUsuarios</h1>
-    <button id="clear" type="button">limpiar datos de variables locales</button>
-    <h1>Eventos:</h1>
-    <div id="cuadrado" style="background-color: brown;width: 300px;height: 110px;text-align: center;">
-      <h1>Mouse Over</h1>
-      <h1>Mouse Over2</h1>
-    </div>
-    </div>
-    <script src="script.js"></script>
+  <div class=" form1 col-md-auto">
+    <button id="update" type="button"">actualizar</button>
+    <button id="ocultarU" type="button" style="display: none;">ocultar</button>
+    <h4 id="objeto" style="display: none;"></h4>
+  </div>
+  <h1>ClearUsuarios</h1>
+  <button id="clear" type="button">limpiar datos de variables locales</button>
+  <h1>Eventos:</h1>
+  <div id="cuadrado" style="background-color: brown;width: 300px;height: 110px;text-align: center;">
+    <h1>Mouse Over</h1>
+    <h1>Mouse Over2</h1>
+  </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 
 </html>

@@ -25,22 +25,37 @@ function addUser(nombre, correo, placas) {
         }
         let arrayUsuarios = JSON.parse(localStorage.getItem('arrayUsuarios'));
         let id = arrayUsuarios.length + 1;
-        console.log("id: " + id);
         const usuario1 = new Usuario(id, nombre, correo, placas);
-        console.log("usuario1: " + JSON.stringify(usuario1));
         arrayUsuarios.push(usuario1);
-        document.getElementById("newUser").innerHTML = ('ultimo usuario nuevo añadido: ' + JSON.stringify(arrayUsuarios[id - 1]));
+
+        document.getElementById("newUser").innerHTML = ('ultimo usuario nuevo añadido: ' + JSON.stringify(usuario1));
         console.log("objeto añadido: " + JSON.stringify(arrayUsuarios[id]));
         localStorage.setItem('arrayUsuarios', JSON.stringify(arrayUsuarios));
         console.log("setItem: " + JSON.stringify(arrayUsuarios));
     }
 }
+
+const Objeto = document.getElementById("objeto")
+let listaOrdenada = JSON.parse(localStorage.getItem('arrayUsuarios')).sort(function (a, b) {
+    return (b.placas - a.placas)
+})
+let texto;
+for (let i = 0; i < listaOrdenada.length; i++) {
+    texto = "Nombre: " + listaOrdenada[i].nombre + "<br/>Placas: " + listaOrdenada[i].placas + "<br/>Id: " + listaOrdenada[i].id + "<br/>"
+    
+    let div = document.createElement('div');
+    div.innerHTML = texto;
+
+    div.classList.add('objeto2');
+    Objeto.appendChild(div);
+}
+Objeto.classList.add('objeto1');
+
+
 function update() {
-    let listaOrdenada = JSON.parse(localStorage.getItem('arrayUsuarios')).sort(function (a, b) {
-        return (b.placas - a.placas)
-    })
-    document.getElementById("objeto").innerHTML = JSON.stringify(listaOrdenada);
-    $("#objeto").show(1000)
+    $("#objeto").show(1000);
+    $("#ocultarU").show();
+    $("#update").hide();
 }
 
 function clear() {
@@ -58,6 +73,7 @@ test.addEventListener("mouseenter", function (event) {
         event.target.style.backgroundColor = 'brown';
     }, 500);
 }, false);
+
 test.addEventListener("mouseover", function (event) {
     event.target.style.color = "blue";
     setTimeout(function () {
@@ -75,8 +91,10 @@ function f1() {
     $(".bloque1").hide(1000)
 }
 
-$("#ocultarU").click(function (){
-    $("#objeto").hide(1000)
+$("#ocultarU").click(function () {
+    $("#objeto").hide(1000);
+    $("#ocultarU").hide();
+    $("#update").show();
 })
 
 
@@ -101,7 +119,7 @@ $("#send").click(function () {
                 alert('Processing form...');
             },
             success: function () {
-                $("#respa").html(data);
+                console.log("sucess, data:" + data);
             }
         })
         return false;
