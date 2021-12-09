@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sergio Bracho</title>
+  <title>Registro de Inversiones</title>
   <link rel="stylesheet" href="styles.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
@@ -17,9 +17,34 @@
   <header>
     <div id="nav-placeholder" class="nav1"></div>
   </header>
-  <div class="div1">
-    <h1>Añadir Usuario</h1>
+  <div>
+    <div id="listContainer"></div>
+  </div>
 
+
+  <div class="div1">
+    <h1>Añadir Gasto</h1>
+    <div class="form1  col-md-4">
+      <form method="post">
+        <p id="cuentaSeleccionada"></p>
+        <br />
+        <select>
+          <option value="Ingreso">Ingreso</option>
+          <option value="Gasto">Gasto</option>
+        </select>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Ingresa un numero" id="gasto">
+        </div>
+        <button type="button" class="btn btn-primary" id="send">Submit</button>
+      </form>
+    </div>
+  </div>
+
+
+
+
+  <div class="div1">
+    <h1>Crear nuevo usuario</h1>
     <div class="form1  col-md-4">
       <form method="post">
         <div class="form-group">
@@ -31,7 +56,7 @@
         </div>
         <br />
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Placas de Video" id="placas">
+          <input type="text" class="form-control" placeholder="Nombre de Cuenta" id="cuenta">
         </div>
         <br />
         <button type="button" class="btn btn-primary" id="send">Submit</button>
@@ -51,11 +76,6 @@
   <input type="text" class="form-control" placeholder="pokemon, ejemplo: pikachu" id="pokemon">
   <h3 id="pokemonInfo"></h3>
   <button id="getJson" type="button">Buscar</button>
-  <h1>Eventos:</h1>
-  <div id="cuadrado" style="background-color: brown;width: 300px;height: 110px;text-align: center;">
-    <h1>Mouse Over</h1>
-    <h1>Mouse Over2</h1>
-  </div>
   </div>
   <script src="script.js"></script>
 </body>

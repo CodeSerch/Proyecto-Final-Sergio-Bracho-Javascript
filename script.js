@@ -1,8 +1,55 @@
+let usuarioActual = "ninguno";
+
+function makeList() {
+    // Establish the array which acts as a data source for the list
+    let listaOrdenada = JSON.parse(localStorage.getItem('arrayUsuarios')).sort(function (a, b) {
+        return (b.nombreCuenta - a.nombreCuenta)
+    })
+    let listContainer = document.getElementById('listContainer');
+    // Make the list
+    let listElement = document.createElement('select'),
+
+    // Set up a loop that goes through the items in listItems one at a time
+    numberOfListItems = listaOrdenada.length,
+    listItem,
+    i;
+
+    listElement.id = 'select'
+
+    listContainer.appendChild(listElement);
+
+    for (i = 0; i < numberOfListItems; ++i) {
+        // create an item for each one
+        listItem = document.createElement('option');
+
+        // Add the item text
+        //listItem.innerHTML =  "Usuario: " + listaOrdenada[i].nombre + ", " + listaOrdenada[i].cuenta.nombreCuenta;
+        listItem.innerHTML =  JSON.stringify(listaOrdenada[i]);
+
+        // Add listItem to the listElement  
+        listElement.appendChild(listItem);
+    }
+
+}
+
+// Usage
+makeList();
+
+$('#select').on('change', function (e) {
+    let selected = $( "#select option:selected" ).text();
+    selected = JSON.parse(selected)
+    let cuentaSeleccionada = document.getElementById('cuentaSeleccionada');
+    cuentaSeleccionada.innerHTML = "Usuario: " + selected.nombre + ", " + selected.cuenta.nombreCuenta;
+    usuarioActual = selected;
+    console.log(selected);
+});
+
+
 class Usuario {
-    constructor(id, nombre, correo, placas) {
+    constructor(id, nombre, correo, cuenta) {
         this.id = id;
         this.nombre = nombre;
-        this.placas = placas;
+        this.cuenta = cuenta;
         this.correo = correo;
     }
 }
@@ -14,8 +61,8 @@ $(function () {
     $("#nav-placeholder").load("nav.html");
 });
 
-function addUser(nombre, correo, placas) {
-    if (nombre == "" || correo == "" || placas == "") {
+function addUser(nombre, correo, nombreCuenta) {
+    if (nombre == "" || correo == "" || nombreCuenta == "") {
         alert("un campo esta vacio!")
     } else {
         if (!(localStorage.getItem('arrayUsuarios'))) {
@@ -25,10 +72,18 @@ function addUser(nombre, correo, placas) {
         }
         let arrayUsuarios = JSON.parse(localStorage.getItem('arrayUsuarios'));
         let id = arrayUsuarios.length + 1;
-        const usuario1 = new Usuario(id, nombre, correo, placas);
-        arrayUsuarios.push(usuario1);
 
-        document.getElementById("newUser").innerHTML = ('Nuevo Usuario: ' + JSON.stringify(usuario1));
+        let cuenta={
+            nombreCuenta:nombreCuenta,
+            balance:0,
+            ingresos:[],
+            gastos:[],
+        }
+
+        const usuarioNuevo = new Usuario(id, nombre, correo, cuenta);
+        arrayUsuarios.push(usuarioNuevo);
+
+        document.getElementById("newUser").innerHTML = ('Nuevo Usuario: ' + JSON.stringify(usuarioNuevo));
         console.log("objeto añadido: " + JSON.stringify(arrayUsuarios[id]));
         localStorage.setItem('arrayUsuarios', JSON.stringify(arrayUsuarios));
         console.log("setItem: " + JSON.stringify(arrayUsuarios));
@@ -41,12 +96,12 @@ function update() {
     const Objeto = document.getElementById("objeto")
     Objeto.innerHTML = '';
     let listaOrdenada = JSON.parse(localStorage.getItem('arrayUsuarios')).sort(function (a, b) {
-        return (b.placas - a.placas)
+        return (b.nombreCuenta - a.nombreCuenta)
     })
 
     let texto;
     for (let i = 0; i < listaOrdenada.length; i++) {
-        texto = "Nombre: " + listaOrdenada[i].nombre + "<br/>Placas: " + listaOrdenada[i].placas + "<br/>Id: " + listaOrdenada[i].id + "<br/>"
+        texto = "Nombre: " + listaOrdenada[i].nombre + "<br/>Placas: " + JSON.stringify(listaOrdenada[i].cuenta) + "<br/>Id: " + listaOrdenada[i].id + "<br/>"
 
         let div = document.createElement('div');
         div.innerHTML = texto;
@@ -68,20 +123,20 @@ function clear() {
 
 let test = document.getElementById("cuadrado");
 
-test.addEventListener("mouseenter", function (event) {
+/*   test.addEventListener("mouseenter", function (event) {
     // highlight the mouseenter target
     event.target.style.backgroundColor = 'green';
     setTimeout(function () {
         event.target.style.backgroundColor = 'brown';
     }, 500);
-}, false);
+}, false);     
 
 test.addEventListener("mouseover", function (event) {
     event.target.style.color = "blue";
     setTimeout(function () {
         event.target.style.color = "";
     }, 1000);
-}, false);
+}, false);*/
 
 
 document.getElementById("update").addEventListener("click", update, false);
@@ -103,15 +158,15 @@ $("#ocultarU").click(function () {
 $("#send").click(function () {
     let nombre = document.getElementById('nombre').value;
     let correo = document.getElementById('correo').value;
-    let placas = document.getElementById('placas').value;
-    if (nombre == "" || correo == "" || placas == "") {
+    let nombreCuenta = document.getElementById('cuenta').value;
+    if (nombre == "" || correo == "" || nombreCuenta == "") {
         console.log("un campo esta vacio! sendForm")
     } else {
         console.log("funcion enviar!");
 
-        addUser(nombre, correo, placas);
+        addUser(nombre, correo, nombreCuenta);
 
-        let data = "<h1>Nombre: " + nombre + '<br/>' + " Correo: " + correo + '<br/>' + " Placas: " + placas + "<h1/>";
+        let data = "<h1>Nombre: " + nombre + '<br/>' + " Correo: " + correo + '<br/>' + " Placas: " + nombreCuenta + "<h1/>";
         console.log("data a enviar: " + data);
         $.ajax({
             type: 'get',
