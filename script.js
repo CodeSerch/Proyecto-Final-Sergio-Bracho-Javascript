@@ -141,6 +141,19 @@ function update() {
     let listaOrdenada = JSON.parse(localStorage.getItem('arrayUsuarios')).sort(function (a, b) {
         return (b.nombreCuenta - a.nombreCuenta)
     })
+    let arrayNuevo = JSON.parse(localStorage.getItem('arrayUsuarios'));
+    for (let i=0;i<arrayNuevo.length;i++){
+        let totalGastos = 0;
+        let totalIngresos = 0;
+        for (let x=0;x<arrayNuevo[i].cuenta.ingresos.length;x++){
+            totalIngresos = totalIngresos + arrayNuevo[i].cuenta.ingresos[x];
+        }
+        for (let x=0;x<arrayNuevo[i].cuenta.gastos.length;x++){
+            totalGastos = totalGastos + arrayNuevo[i].cuenta.gastos[x];
+        }
+        arrayNuevo[i].cuenta.balance = totalIngresos - totalGastos;
+    }
+    localStorage.setItem('arrayUsuarios', JSON.stringify(arrayNuevo));
 
     let texto;
     for (let i = 0; i < listaOrdenada.length; i++) {
@@ -211,7 +224,6 @@ $("#sendMov").click(function () {
         console.log(arrayUsuarios[index].cuenta.gastos);
 
         localStorage.setItem('arrayUsuarios', JSON.stringify(arrayUsuarios))
-        update();
     } else {
         let ingreso = parseInt($('#movNum').val());
         alert("Ingreso: " + ingreso);
@@ -223,8 +235,8 @@ $("#sendMov").click(function () {
         console.log(arrayUsuarios[index].cuenta.ingresos);
 
         localStorage.setItem('arrayUsuarios', JSON.stringify(arrayUsuarios))
-        update();
     }
+    update();
 });
 
 $("#send").click(function () {
