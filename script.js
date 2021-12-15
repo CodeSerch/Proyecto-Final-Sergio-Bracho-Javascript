@@ -43,7 +43,7 @@ function makeList() {
             listItem = document.createElement('option');
 
             // Add the item text
-            listItem.label = "Usuario: " + listaOrdenada[i].nombre + ", " + listaOrdenada[i].cuenta.nombreCuenta + "  Balance: " + listaOrdenada[i].cuenta.balance;
+            listItem.label = "Usuario: " + listaOrdenada[i].nombre + ", Cuenta: " + listaOrdenada[i].cuenta.nombreCuenta ;
             listItem.value = JSON.stringify(listaOrdenada[i]);
 
             // Add listItem to the listElement  
