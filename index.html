@@ -13,7 +13,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-<body class="p-3 mb-2 bg-primary text-white">
+<body class="p-3 mb-2 bg-primary text-white"> 
   <header>
     <div id="nav-placeholder" class="nav1"></div>
   </header>
@@ -25,19 +25,22 @@
   <div class="div1">
     <h1>Añadir Gasto</h1>
     <div class="form1  col-md-4">
-      <form method="post">
+      <form method="post" id="formMov" class="formMov">
         <p id="cuentaSeleccionada"></p>
-        <br />
-        <select>
+        <select id="selectMovimiento">
+          <option>Tipo de Movimiento</option>
           <option value="Ingreso">Ingreso</option>
           <option value="Gasto">Gasto</option>
         </select>
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Ingresa un numero" id="gasto">
+          <input type="text" class="form-control" placeholder="Ingresa un numero" id="movNum">
         </div>
-        <button type="button" class="btn btn-primary" id="send">Submit</button>
+        <button type="button" class="btn btn-primary" id="sendMov">Submit</button>
       </form>
     </div>
+    
+  <h3 id="apiInfo">Dolar Blue:</h3>
+  <button id="getJson" type="button">Buscar</button>
   </div>
 
 
@@ -73,9 +76,6 @@
   <h1>ClearUsuarios</h1>
   <button id="clear" type="button">limpiar datos de variables locales</button>
   <br/>
-  <input type="text" class="form-control" placeholder="pokemon, ejemplo: pikachu" id="pokemon">
-  <h3 id="pokemonInfo"></h3>
-  <button id="getJson" type="button">Buscar</button>
   </div>
   <script src="script.js"></script>
 </body>
