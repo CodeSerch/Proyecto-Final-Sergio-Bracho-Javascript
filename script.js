@@ -58,7 +58,7 @@ function makeList() {
 // Usage
 makeList();
 
-$('#select disabled selected value');
+//$('#select disabled selected value');
 
 $('#select').on('change', function (e) {
 
@@ -133,14 +133,7 @@ function addUser(nombre, correo, nombreCuenta) {
     }
 }
 
-
-
-function update() {
-    const Objeto = document.getElementById("objeto")
-    Objeto.innerHTML = '';
-    let listaOrdenada = JSON.parse(localStorage.getItem('arrayUsuarios')).sort(function (a, b) {
-        return (b.nombreCuenta - a.nombreCuenta)
-    })
+function updateBalance(){
     let arrayNuevo = JSON.parse(localStorage.getItem('arrayUsuarios'));
     for (let i=0;i<arrayNuevo.length;i++){
         let totalGastos = 0;
@@ -154,6 +147,16 @@ function update() {
         arrayNuevo[i].cuenta.balance = totalIngresos - totalGastos;
     }
     localStorage.setItem('arrayUsuarios', JSON.stringify(arrayNuevo));
+    
+}
+
+function update() {
+    updateBalance();
+    const Objeto = document.getElementById("objeto")
+    Objeto.innerHTML = '';
+    let listaOrdenada = JSON.parse(localStorage.getItem('arrayUsuarios')).sort(function (a, b) {
+        return (b.nombreCuenta - a.nombreCuenta)
+    })
 
     let texto;
     for (let i = 0; i < listaOrdenada.length; i++) {

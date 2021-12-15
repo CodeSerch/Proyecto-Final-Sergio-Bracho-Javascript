@@ -1,22 +1,36 @@
 header.class1 {
   color: blue;
-  text-align: center; 
+  text-align: center;
   padding: 3px;
   margin: 0px;
- 
 }
 
-div.form1{
-  background-color: rgba(63, 63, 63, 0.753);
+div.update {
+  background-color: rgba(60, 55, 119, 0.753);
   padding: 20px;
   border-radius: 10px;
   word-wrap: break-word;
+  justify-content: end;
+  margin-left: 100px;
 }
-.div1{
-     padding: 20px;
+.div1 {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(78, 74, 153, 0.753);
+}
+div.principal {
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(39, 38, 102, 0.459);
+}
+div.divCrear {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(78, 74, 153, 0.753);
 }
 
-.objeto1{
+.objeto1 {
   background-color: rgb(54, 54, 133);
   border: 2px solid blue;
   border-radius: 15px;
@@ -25,7 +39,7 @@ div.form1{
   flex-direction: row;
   flex-wrap: wrap;
 }
-.objeto2{
+.objeto2 {
   background-color: rgba(119, 119, 119, 0.589);
   border: 2px solid rgb(146, 190, 255);
   border-radius: 15px;
@@ -35,27 +49,24 @@ div.form1{
   margin: 10px;
 }
 
-select.listaCuenta{
+select.listaCuenta {
   margin-top: 20px;
-
 }
-form.formMov{
+form.formMov {
   display: none;
 }
 li.list1 {
   display: inline;
 }
 span.title1 {
-     display: inline;
-     font-size: 40px;
-     font-family: sans-serif;
-     font-weight: bolder;
-     
-     
-   }
+  display: inline;
+  font-size: 40px;
+  font-family: sans-serif;
+  font-weight: bolder;
+}
 
-span.list1{
-     float: right;
+span.list1 {
+  float: right;
 }
 
 a:link.type1,
@@ -70,16 +81,15 @@ a:visited.type1 {
   text-emphasis-color: rgb(149, 135, 233);
 }
 
-a:hover.type1, a:active.type1 {
-     background-color: #00ccffb0;
-   }
+a:hover.type1,
+a:active.type1 {
+  background-color: #00ccffb0;
+}
 
-
-
-   .concatenar{
-     width: 300px;
-    padding-top: 100px;
-    padding-bottom: 100px;
-    background-color: blue;
-    text-align: center;
-   }
+.concatenar {
+  width: 300px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: blue;
+  text-align: center;
+}

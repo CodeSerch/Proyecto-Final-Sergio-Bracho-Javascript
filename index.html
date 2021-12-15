@@ -13,20 +13,24 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-<body class="p-3 mb-2 bg-primary text-white"> 
+<body class="p-3 mb-2 bg-primary text-white">
   <header>
     <div id="nav-placeholder" class="nav1"></div>
   </header>
+
+
   <div>
     <div id="listContainer"></div>
   </div>
 
 
-  <div class="div1">
-    <h1>Añadir Gasto</h1>
-    <div class="form1  col-md-4">
+  <p id="cuentaSeleccionada"></p>
+  <div class="principal">
+
+    <div class="div1">
+      <h1>Añadir Movimiento</h1>
+
       <form method="post" id="formMov" class="formMov">
-        <p id="cuentaSeleccionada"></p>
         <select id="selectMovimiento">
           <option>Tipo de Movimiento</option>
           <option value="Ingreso">Ingreso</option>
@@ -37,45 +41,47 @@
         </div>
         <button type="button" class="btn btn-primary" id="sendMov">Submit</button>
       </form>
+
+      <h3 id="apiInfo">Dolar Blue:</h3>
+      <button id="getJson" type="button">Buscar</button>
+
     </div>
-    
-  <h3 id="apiInfo">Dolar Blue:</h3>
-  <button id="getJson" type="button">Buscar</button>
-  </div>
 
 
-
-
-  <div class="div1">
-    <h1>Crear nuevo usuario</h1>
-    <div class="form1  col-md-4">
-      <form method="post">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Nombre" id="nombre">
-        </div>
-        <br />
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Correo" id="correo">
-        </div>
-        <br />
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Nombre de Cuenta" id="cuenta">
-        </div>
-        <br />
-        <button type="button" class="btn btn-primary" id="send">Submit</button>
-      </form>
-    </div>
-  </div>
-  <h3 id="newUser"></h3>
-  <h1>Actualizar</h1>
-  <div class=" form1 col-md-auto">
-    <button id="update" type="button"">actualizar</button>
+    <div class="update col-md-8">
+      <h1>Actualizar</h1>
+      <button id="update" type="button"">actualizar</button>
     <button id="ocultarU" type="button" style="display: none;">ocultar</button>
-    <h4 id="objeto" style="display: none;"></h4>
+      <h4 id="objeto" style="display: none;"></h4>
+    </div>
+
   </div>
+
+
+  <div class="divCrear  col-md-4">
+    <h1>Crear nuevo usuario</h1>
+    <form method="post">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Nombre" id="nombre">
+      </div>
+      <br />
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Correo" id="correo">
+      </div>
+      <br />
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Nombre de Cuenta" id="cuenta">
+      </div>
+      <br />
+      <button type="button" class="btn btn-primary" id="send">Submit</button>
+    </form>
+  </div>
+
+  <h3 id="newUser"></h3>
+
   <h1>ClearUsuarios</h1>
   <button id="clear" type="button">limpiar datos de variables locales</button>
-  <br/>
+  <br />
   </div>
   <script src="script.js"></script>
 </body>
