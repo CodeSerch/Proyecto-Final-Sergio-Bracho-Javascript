@@ -61,20 +61,26 @@ makeList();
 //$('#select disabled selected value');
 function cuentaSelect() {
     let selected = $("#select option:selected").val();
+    
+    selected = JSON.parse(selected);
+
+    let arrayUsuarios = JSON.parse(localStorage.getItem('arrayUsuarios'));
+    const thisUser = arrayUsuarios[selected.id-1];
+    //arrayUsuarios[selected.id-1]
+
     if (selected == "false") {
         console.log("cuenta no seleccionada");
         cuentaSeleccionada.innerHTML = "Ninguna cuenta seleccionada";
         usuarioActual = "ninguno";
         $('#formMov').hide(1000);
     } else {
-        $('#cuentaSeleccionada').hide(1000);
-        $('#cuentaSeleccionada').show(1000);
         $('#formMov').show(1000);
-        selected = JSON.parse(selected)
+        
+
         let cuentaSeleccionada = document.getElementById('cuentaSeleccionada');
-        cuentaSeleccionada.innerHTML = "Usuario: " + selected.nombre + ", " + selected.cuenta.nombreCuenta + "<br/>Balance: " + selected.cuenta.balance;
-        usuarioActual = selected;
-        console.log(selected);
+        cuentaSeleccionada.innerHTML = "Usuario: " + thisUser.nombre + ", " + thisUser.cuenta.nombreCuenta + "<br/>Balance: " + thisUser.cuenta.balance;
+        usuarioActual = arrayUsuarios[selected.id-1];
+        console.log(usuarioActual);
     }
 }
 
