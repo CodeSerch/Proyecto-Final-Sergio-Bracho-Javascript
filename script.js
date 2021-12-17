@@ -60,6 +60,9 @@ makeList();
 
 //$('#select disabled selected value');
 function cuentaSelect() {
+    
+    updateBalance();
+    
     let selected = $("#select option:selected").val();
     
     selected = JSON.parse(selected);
@@ -250,7 +253,7 @@ $("#sendMov").click(function () {
 
         localStorage.setItem('arrayUsuarios', JSON.stringify(arrayUsuarios))
     }
-    update();
+    //update();
     //$('cuentaSeleccionada').hide(1000);
     cuentaSelect();
 });
