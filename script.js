@@ -43,7 +43,7 @@ function makeList() {
             listItem = document.createElement('option');
 
             // Add the item text
-            listItem.label = "Usuario: " + listaOrdenada[i].nombre + ", Cuenta: " + listaOrdenada[i].cuenta.nombreCuenta ;
+            listItem.label = "Usuario: " + listaOrdenada[i].nombre + ", Cuenta: " + listaOrdenada[i].cuenta.nombreCuenta;
             listItem.value = JSON.stringify(listaOrdenada[i]);
 
             // Add listItem to the listElement  
@@ -59,9 +59,7 @@ function makeList() {
 makeList();
 
 //$('#select disabled selected value');
-
-$('#select').on('change', function (e) {
-
+function cuentaSelect() {
     let selected = $("#select option:selected").val();
     if (selected == "false") {
         console.log("cuenta no seleccionada");
@@ -69,13 +67,20 @@ $('#select').on('change', function (e) {
         usuarioActual = "ninguno";
         $('#formMov').hide(1000);
     } else {
+        $('#cuentaSeleccionada').hide(1000);
+        $('#cuentaSeleccionada').show(1000);
         $('#formMov').show(1000);
         selected = JSON.parse(selected)
         let cuentaSeleccionada = document.getElementById('cuentaSeleccionada');
-        cuentaSeleccionada.innerHTML = "Usuario: " + selected.nombre + ", " + selected.cuenta.nombreCuenta;
+        cuentaSeleccionada.innerHTML = "Usuario: " + selected.nombre + ", " + selected.cuenta.nombreCuenta + "<br/>Balance: " + selected.cuenta.balance;
         usuarioActual = selected;
         console.log(selected);
     }
+}
+
+$('#select').on('change', function (e) {
+
+    cuentaSelect();
 
 });
 
@@ -133,21 +138,21 @@ function addUser(nombre, correo, nombreCuenta) {
     }
 }
 
-function updateBalance(){
+function updateBalance() {
     let arrayNuevo = JSON.parse(localStorage.getItem('arrayUsuarios'));
-    for (let i=0;i<arrayNuevo.length;i++){
+    for (let i = 0; i < arrayNuevo.length; i++) {
         let totalGastos = 0;
         let totalIngresos = 0;
-        for (let x=0;x<arrayNuevo[i].cuenta.ingresos.length;x++){
+        for (let x = 0; x < arrayNuevo[i].cuenta.ingresos.length; x++) {
             totalIngresos = totalIngresos + arrayNuevo[i].cuenta.ingresos[x];
         }
-        for (let x=0;x<arrayNuevo[i].cuenta.gastos.length;x++){
+        for (let x = 0; x < arrayNuevo[i].cuenta.gastos.length; x++) {
             totalGastos = totalGastos + arrayNuevo[i].cuenta.gastos[x];
         }
         arrayNuevo[i].cuenta.balance = totalIngresos - totalGastos;
     }
     localStorage.setItem('arrayUsuarios', JSON.stringify(arrayNuevo));
-    
+
 }
 
 function update() {
@@ -240,6 +245,8 @@ $("#sendMov").click(function () {
         localStorage.setItem('arrayUsuarios', JSON.stringify(arrayUsuarios))
     }
     update();
+    //$('cuentaSeleccionada').hide(1000);
+    cuentaSelect();
 });
 
 $("#send").click(function () {
@@ -287,7 +294,7 @@ $("#getJson").click(function () {
         success: function (data) {
             console.log("sucess, data:" + JSON.stringify(data));
             //apiInfo.innerHTML = ("Nombre: " + data.name + " Id: " + data.id + " Tipo: " + JSON.stringify(data.types[0].type.name));
-            apiInfo.innerHTML = "Dolar Blue: " + data.blue.value_avg;
+            apiInfo.innerHTML = "Usuario actual: " + usuarioActual.nombre + "<br/>Balance en USD: " + (usuarioActual.cuenta.balance / data.blue.value_avg) + "<br/>Dolar Blue: " + data.blue.value_avg;
             alert("getJson existoso");
         }
     })
