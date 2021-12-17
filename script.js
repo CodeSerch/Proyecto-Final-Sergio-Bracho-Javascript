@@ -160,7 +160,7 @@ function update() {
 
     let texto;
     for (let i = 0; i < listaOrdenada.length; i++) {
-        texto = "Nombre: " + listaOrdenada[i].nombre + "<br/>Cuenta: " + JSON.stringify(listaOrdenada[i].cuenta) + "<br/>Id: " + listaOrdenada[i].id + "<br/>"
+        texto = "Nombre: " + listaOrdenada[i].nombre + "<br/>Cuenta: " + listaOrdenada[i].cuenta.nombreCuenta + "<br/>Balance: " + listaOrdenada[i].cuenta.balance + "<br/>Ingresos: " + listaOrdenada[i].cuenta.ingresos + "<br/>Gastos: " + listaOrdenada[i].cuenta.gastos + "<br/>Id: " + listaOrdenada[i].id + "<br/>"
 
         let div = document.createElement('div');
         div.innerHTML = texto;
