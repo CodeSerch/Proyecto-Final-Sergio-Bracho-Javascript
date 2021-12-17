@@ -42,7 +42,7 @@
       </form>
 
       <h3 id="apiInfo">Api Dolar Blue:</h3>
-      <button id="getJson" type="button">Buscar</button>
+      <button id="getJson" type="button" class="btn btn-primary">Buscar</button>
 
       <div>
         <h2>Crear nuevo usuario</h2>
@@ -68,10 +68,16 @@
 
     <div class="update col-md-8">
       <h1>Lista de Usuarios</h1>
-      <button id="update" type="button"">mostrar</button>
-    <button id="ocultarU" type="button" style="display: none;">ocultar</button>
+      <button id="update" type="button" class="btn btn-success">mostrar</button>
+    <button id="ocultarU" type="button" class="btn btn-success" style="display: none;">ocultar</button>
       <h4 id="objeto" style="display: none;"></h4>
+
+      <div class="clearUsuarios">
+      <h2>ClearUsuarios</h2>
+      <button id="clear" type="button" class="btn btn-danger">limpiar datos de variables locales</button>  
+      </div>  
     </div>
+    
 
   </div>
 
@@ -80,9 +86,6 @@
 
   <h3 id="newUser"></h3>
 
-  <h1>ClearUsuarios</h1>
-  <button id="clear" type="button">limpiar datos de variables locales</button>
-  <br />
   </div>
   <script src="script.js"></script>
 </body>

@@ -62,7 +62,7 @@ makeList();
 function cuentaSelect() {
     
     updateBalance();
-    
+
     let selected = $("#select option:selected").val();
     
     selected = JSON.parse(selected);
@@ -185,6 +185,7 @@ function update() {
     Objeto.classList.add('objeto1');
     $("#objeto").show(1000);
     $("#ocultarU").show();
+    $(".clearUsuarios").hide(1000);
     $("#update").hide();
 }
 
@@ -225,6 +226,7 @@ $("#ocultarU").click(function () {
     $("#objeto").hide(1000);
     $("#ocultarU").hide();
     $("#update").show();
+    $(".clearUsuarios").show(1000);
 })
 
 

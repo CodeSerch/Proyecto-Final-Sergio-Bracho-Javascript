@@ -6,17 +6,19 @@ header.class1 {
 }
 
 div.update {
-  background-color: rgba(60, 55, 119, 0.753);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #3C53E8;
   padding: 20px;
   border-radius: 10px;
   word-wrap: break-word;
-  justify-content: end;
   margin-left: 100px;
 }
 .div1 {
   padding: 20px;
   border-radius: 10px;
-  background-color: rgba(78, 74, 153, 0.753);
+  background-color: #3C53E8;
 }
 div.principal {
   padding: 20px;
@@ -31,7 +33,7 @@ div.divCrear {
 }
 
 .objeto1 {
-  background-color: rgb(54, 54, 133);
+  background-color: #364ACF;
   border: 2px solid blue;
   border-radius: 15px;
   padding: 10px;
@@ -40,8 +42,8 @@ div.divCrear {
   flex-wrap: wrap;
 }
 .objeto2 {
-  background-color: rgba(119, 119, 119, 0.589);
-  border: 2px solid rgb(146, 190, 255);
+  background-color: #4058F5;
+  border: 2px solid rgb(119, 158, 218);
   border-radius: 15px;
   padding: 10px;
   display: flex;
@@ -92,4 +94,12 @@ a:active.type1 {
   padding-bottom: 100px;
   background-color: blue;
   text-align: center;
+}
+
+div.clearUsuarios{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 200px;
+  
 }
